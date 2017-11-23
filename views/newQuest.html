@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../resources/js/jquery.js"></script>
+        <style>
+            .card{
+                margin-bottom: 4px;
+                margin-top: 10px;
+                border-style: hidden;
+            }
+            
+            .pergunta{
+                border-top-style: hidden;
+                border-left-style: hidden;
+                border-right-style: hidden;
+                width: 90%;
+                height: 40px;
+                
+            }
+            .box{
+                width: 40%;
+                height: 300px;
+            }
+            
+            select.basic{
+                width: 100px;
+                height: 35px;
+                border: none #1abc9c;
+            }
+        </style>
+        <script>
+            
+            
+        </script>
+    </head>
+    
+    <body>
+        <div class="card">
+            <form method="GET" id="formPrincipal" action="">
+                
+                <div class="box" >
+                <input class="pergunta" type="text" id="pergunta" placeholder="Pergunta" name="pergunta">
+                
+                <select  id="menu" class="basic"   onchange="escolheResposta()">
+                    <option value=" " selected="selected"></option>
+                    <option value="1" >Única Opção</option>
+                    <option value="2">Multipla Escolha</option>
+                    <option value="3">Discursiva</option>
+                </select>
+                <div id="pergunta2">
+                    
+                </div> 
+                
+                </div>
+                
+                <input type="submit" value="Envia">
+            </form>
+            
+            
+        </div> 
+        <script>
+            function escolheResposta(){
+                var valor = $("#menu").val();
+                $.get("../controller/questao.php", {
+                    tipoPergunta :valor
+                }).done(function (val){
+                    $("#pergunta2").html(val);
+                });
+                 
+            }
+            function novaPergunta(){
+                
+            }
+        </script>
+    </body>
+    
+</html>
