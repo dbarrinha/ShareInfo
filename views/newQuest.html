@@ -6,9 +6,12 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Novo Questionário</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="../resources/js/jquery.js"></script>
         <style>
             .card{
@@ -30,10 +33,47 @@ and open the template in the editor.
                 height: 300px;
             }
             
-            select.basic{
-                width: 100px;
-                height: 35px;
-                border: none #1abc9c;
+            body {
+                font: 20px Montserrat, sans-serif;
+                line-height: 1.8;
+                color: #f5f6f7;
+            }
+            p {font-size: 16px;}
+            .margin {margin-bottom: 45px;
+                     color: black;
+            }
+            .bg-1 { 
+                background-color: #1abc9c; /* Green */
+                color: black;
+            }
+            .bg-2 { 
+                background-color: #474e5d; /* Dark Blue */
+                color: #ffffff;
+            }
+            .bg-3 { 
+                background-color: #ffffff; /* White */
+                color: #555555;
+            }
+            .bg-4 { 
+                background-color: #2f2f2f; /* Black Gray */
+                color: #1abc9c;
+            }
+            .container-fluid {
+                padding-top: 70px;
+                padding-bottom: 70px;
+            }
+            .navbar {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border: 0;
+                border-radius: 0;
+                margin-bottom: 0;
+                font-size: 12px;
+                letter-spacing: 5px;
+                
+            }
+            .navbar-nav  li a:hover {
+                color: #1abc9c !important;
             }
         </style>
         <script>
@@ -46,17 +86,20 @@ and open the template in the editor.
         <div class="card">
             <form method="GET" id="formPrincipal" action="">
                 
-                <div class="box" >
-                <input class="pergunta" type="text" id="pergunta" placeholder="Pergunta" name="pergunta">
+                <div class="container-fluid bg-3" >
+                <h3 class="margin text-center">Qual sua pergunta?</h3>
+                <input class="form-control" type="text" id="pergunta" placeholder="Pergunta" >
                 
-                <select  id="menu" class="basic"   onchange="escolheResposta()">
-                    <option value=" " selected="selected"></option>
+                <select  id="menu" class="form-control bg-3"   onchange="escolheResposta()">
+                    <option value=" " selected="selected">Escolha a forma de resposta</option>
                     <option value="1" >Única Opção</option>
                     <option value="2">Multipla Escolha</option>
                     <option value="3">Discursiva</option>
                 </select>
-                <select  id="num" class="basic" style="display:none"  onchange="escolheRespostaNum()">
-                    <option value="1" selected="selected" >1</option>
+                
+                <select  id="num" class="form-control bg-3" style="display:none"  onchange="escolheRespostaNum()">
+                    <option value="0" selected="selected" > Escolha o numero de respostas</option>
+                    <option value="1" >1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -68,9 +111,10 @@ and open the template in the editor.
                     
                 </div> 
                 
+                <input type="submit" value="Envia">
                 </div>
                 
-                <input type="submit" value="Envia">
+                
             </form>
             
             

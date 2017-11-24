@@ -9,10 +9,10 @@ if($tipo_pergunta == 1){
     }
 }else if($tipo_pergunta == 2){
     for($i= 0; $i < $num; $i++){
-        echo "<input type='checkbox' name='op{$i}'> opção ".$i;
+        echo "<input type='checkbox' style='display: block' name='op{$i}' > opção ".$i;
     }
 }else if($tipo_pergunta == 3){
-     echo "<input type='text' name='texto'>";
+     echo "<input type='text' class='pergunta' name='texto'>";
 }else{
     echo "";
 }
