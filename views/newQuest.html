@@ -55,6 +55,15 @@ and open the template in the editor.
                     <option value="2">Multipla Escolha</option>
                     <option value="3">Discursiva</option>
                 </select>
+                <select  id="num" class="basic" style="display:none"  onchange="escolheRespostaNum()">
+                    <option value="1" selected="selected" >1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
                 <div id="pergunta2">
                     
                 </div> 
@@ -69,15 +78,30 @@ and open the template in the editor.
         <script>
             function escolheResposta(){
                 var valor = $("#menu").val();
-                $.get("../controller/questao.php", {
-                    tipoPergunta :valor
-                }).done(function (val){
-                    $("#pergunta2").html(val);
-                });
-                 
+                var num = $("#num").val();
+                if(valor == 1 || valor == 2){
+                    $("#num").show();
+                    $("#pergunta2").html("");
+                }
+                else {
+                    num = 0;
+                    $("#num").hide();
+                    $.get("../controller/questao.php", {
+                        tipoPergunta :valor, num : num
+                    }).done(function (val){
+                        $("#pergunta2").html(val);
+                    });
+                }
             }
-            function novaPergunta(){
-                
+            
+            function escolheRespostaNum(){
+                var num = $("#num").val();
+                var valor = $("#menu").val();
+                $.get("../controller/questao.php", {
+                        tipoPergunta :valor, num : num
+                    }).done(function (val){
+                        $("#pergunta2").html(val);
+                    });
             }
         </script>
     </body>
