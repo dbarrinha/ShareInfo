@@ -14,29 +14,11 @@ and open the template in the editor.
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="../resources/js/jquery.js"></script>
         <style>
-            .card{
-                margin-bottom: 4px;
-                margin-top: 10px;
-                border-style: hidden;
-            }
-            
-            .pergunta{
-                border-top-style: hidden;
-                border-left-style: hidden;
-                border-right-style: hidden;
-                width: 90%;
-                height: 40px;
-                
-            }
-            .box{
-                width: 40%;
-                height: 300px;
-            }
             
             body {
                 font: 20px Montserrat, sans-serif;
                 line-height: 1.8;
-                color: #f5f6f7;
+                color: #1abc9c;
             }
             p {font-size: 16px;}
             .margin {margin-bottom: 45px;
@@ -75,6 +57,19 @@ and open the template in the editor.
             .navbar-nav  li a:hover {
                 color: #1abc9c !important;
             }
+            .tamG{
+                width: 20px;
+                height: 20px;
+                
+            }
+            .newAsk{
+                color: black;
+                background-color:aliceblue;
+                text-decoration:infotext; 
+                width: 100%;
+                
+                    
+            }
         </style>
         <script>
             
@@ -83,38 +78,48 @@ and open the template in the editor.
     </head>
     
     <body>
-        <div class="card">
-            <form method="GET" id="formPrincipal" action="">
-                
-                <div class="container-fluid bg-3" >
-                <h3 class="margin text-center">Qual sua pergunta?</h3>
-                <input class="form-control" type="text" id="pergunta" placeholder="Pergunta" >
-                
-                <select  id="menu" class="form-control bg-3"   onchange="escolheResposta()">
-                    <option value=" " selected="selected">Escolha a forma de resposta</option>
-                    <option value="1" >Única Opção</option>
-                    <option value="2">Multipla Escolha</option>
-                    <option value="3">Discursiva</option>
-                </select>
-                
-                <select  id="num" class="form-control bg-3" style="display:none"  onchange="escolheRespostaNum()">
-                    <option value="0" selected="selected" > Escolha o numero de respostas</option>
-                    <option value="1" >1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                </select>
-                <div id="pergunta2">
+        <nav class="navbar navbar-default">
+            <div class="container">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Share Info</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#">Entrar</a></li>
+                  <li><a href="#">Cadastrar</a></li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+        <div class="bg-1">
+            <form method="GET" id="formPrincipal" action="" class="text-center">
+                <div id="questionario" class="container-fluid " >
+                    <h3 class="margin text-center">Qual sua pergunta?</h3>
                     
-                </div> 
-                
-                <input type="submit" value="Envia">
+                    <div id="pergunta1">
+                        <input class="form-control" type="text" id="pergunta" placeholder="Pergunta" >
+                        <select  id="menu" class="form-control bg-3"   onchange="escolheResposta()">
+                            <option value=" " selected="selected">Escolha a forma de resposta</option>
+                            <option value="1" >Única Opção</option>
+                            <option value="2">Multipla Escolha</option>
+                            <option value="3">Discursiva</option>
+                        </select>
+                        <select  id="num" class="form-control bg-3" style="display:none"  onchange="escolheRespostaNum()">
+                            <option value="0" selected="selected" > Escolha o numero de respostas</option>
+                            <option value="1" >1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                        <div id="pergunta2">
+                        </div> 
+                    </div>
                 </div>
-                
-                
+                <input type="button" class="newAsk" value="Nova Pergunta +" onclick="novaPergunta()">
+                <input type="submit" class="btn-lg" value="Envia">
             </form>
             
             
@@ -145,6 +150,12 @@ and open the template in the editor.
                         tipoPergunta :valor, num : num
                     }).done(function (val){
                         $("#pergunta2").html(val);
+                    });
+            }
+            
+            function novaPergunta(){
+                $.get("newQuest.php").done(function (val){
+                        $("#questionario").append(val);
                     });
             }
         </script>
