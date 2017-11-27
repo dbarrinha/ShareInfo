@@ -1,7 +1,7 @@
 <?php 
-
+//$_SESSION["index_pergunta"]++;
 $pergunta = "<hr/>
-    <div id='pergunta3'>
+    <div id='pergunta'>
                         <input class='form-control' type='text' id='pergunta' placeholder='Pergunta' >
                         <select  id='menu' class='form-control bg-3'   onchange='escolheResposta()'>
                             <option value=' ' selected='selected'>Escolha a forma de resposta</option>
