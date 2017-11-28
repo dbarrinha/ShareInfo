@@ -2,9 +2,9 @@
 //$_SESSION["index_pergunta"]++;
 require '../model/Pergunta.php';
 $pergunta = "<hr/>
-    <div id='pergunta'>
-                        <input class='form-control' type='text' id='pergunta' placeholder='Pergunta' >
-                        <select  id='menu' class='form-control bg-3'   onchange='escolheResposta()'>
+    <div id='{$id}'>
+                        <input class='form-control' type='text' id='titulo{$id}' placeholder='Pergunta' >
+                        <select  id='menu{$id}' class='form-control bg-3'   onchange='escolheResposta()'>
                             <option value=' ' selected='selected'>Escolha a forma de resposta</option>
                             <option value='1' >Única Opção</option>
                             <option value='2'>Multipla Escolha</option>
