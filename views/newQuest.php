@@ -1,5 +1,6 @@
 <?php 
 //$_SESSION["index_pergunta"]++;
+require '../model/Pergunta.php';
 $pergunta = "<hr/>
     <div id='pergunta'>
                         <input class='form-control' type='text' id='pergunta' placeholder='Pergunta' >
@@ -23,4 +24,4 @@ $pergunta = "<hr/>
                         </div> 
                     </div>";
 
-echo $pergunta;
+echo $pergunta; 
