@@ -1,10 +1,9 @@
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/dao/QuestionarioDao.php';
-
-$questionarioDao = new QuestionarioDao();
-$questionario = new Questionario();
-$questionario->setIdUsuario(1);
-$questionario->setIdTitulo("titulo do quest");
-
-$resultado = $questionarioDao->inserirQuestionario($usuario);
-echo $resultado;
+titulo_quest=tituloquest
+id_user=55
+titulo_perg1=aaaaaaaaa
+&txt_alt1=resp1
+&txt_alt2=resp2
+&txt_alt3=resp3
+&titulo_perg2=bbbbbbbbb
+&txt_alt1=resp4
+&txt_alt2=resp5
