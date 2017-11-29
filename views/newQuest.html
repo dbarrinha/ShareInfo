@@ -96,27 +96,7 @@ and open the template in the editor.
                 <div id="questionario" class="container-fluid " >
                     <h3 class="margin text-center">Qual sua pergunta?</h3>
                     
-                    <div id="pergunta1">
-                        <input class="form-control" type="text" id="pergunta" placeholder="Pergunta" >
-                        <select  id="menu" class="form-control bg-3"   onchange="escolheResposta()">
-                            <option value=" " selected="selected">Escolha a forma de resposta</option>
-                            <option value="1" >Única Opção</option>
-                            <option value="2">Multipla Escolha</option>
-                            <option value="3">Discursiva</option>
-                        </select>
-                        <select  id="num" class="form-control bg-3" style="display:none"  onchange="escolheRespostaNum()">
-                            <option value="0" selected="selected" > Escolha o numero de respostas</option>
-                            <option value="1" >1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                        </select>
-                        <div id="pergunta2">
-                        </div> 
-                    </div>
+                    
                 </div>
                 <input type="button" class="newAsk" value="Nova Pergunta +" onclick="novaPergunta()">
                 <input type="submit" class="btn-lg" value="Envia">
@@ -125,36 +105,39 @@ and open the template in the editor.
             
         </div> 
         <script>
-            function escolheResposta(){
-                var valor = $("#menu").val();
-                var num = $("#num").val();
+            function escolheResposta(id_pergunta){
+                var valor = $("#menu"+id_pergunta).val();
+                var num = $("#num"+id_pergunta).val();
                 if(valor == 1 || valor == 2){
-                    $("#num").show();
-                    $("#pergunta2").html("");
+                    $("#num"+id_pergunta).show();
+                    $("#pergunta"+id_pergunta).html("");
                 }
                 else {
                     num = 0;
-                    $("#num").hide();
+                    $("#num"+id_pergunta).hide();
                     $.get("../controller/questao.php", {
-                        tipoPergunta :valor, num : num
+                        tipoPergunta :valor, num : num,
+                        id_pergunta :id_pergunta
                     }).done(function (val){
-                        $("#pergunta2").html(val);
+                        $("#pergunta"+id_pergunta).html(val);
                     });
                 }
             }
             
-            function escolheRespostaNum(){
-                var num = $("#num").val();
-                var valor = $("#menu").val();
+            function escolheRespostaNum(id_pergunta){
+                var num = $("#num"+id_pergunta).val();
+                var valor = $("#menu"+id_pergunta).val();
                 $.get("../controller/questao.php", {
-                        tipoPergunta :valor, num : num
+                        tipoPergunta :valor,
+                        num : num,
+                        id_pergunta :id_pergunta
                     }).done(function (val){
-                        $("#pergunta2").html(val);
+                        $("#pergunta"+id_pergunta).html(val);
                     });
             }
             
             function novaPergunta(){
-                $.get("newQuest.php").done(function (val){
+                $.get("../controller/newQuest.php").done(function (val){
                         $("#questionario").append(val);
                     });
             }
