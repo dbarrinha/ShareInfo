@@ -64,6 +64,11 @@ and open the template in the editor.
   .navbar-nav  li a:hover {
       color: #1abc9c !important;
   }
+  
+  .newQuest{
+      border-style: double;
+      background-color: red;
+  }
         </style>
     </head>
     <body>
@@ -76,11 +81,14 @@ and open the template in the editor.
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>                        
               </button>
-              <a class="navbar-brand" href="#">Share Info</a>
+                <a class="navbar-brand" href="/index.html">Share Info</a>
+              <a class="navbar-brand" href="#">Painel</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
+                  <li><a class="newQuest" href="newQuest.html">NOVO QUESTIONÁRIO!</a></li>
                   <li><a><?php echo $user ?></a></li>
+                  <li><a href="/controller/logout.php">Sair</a></li>
               </ul>
             </div>
           </div>

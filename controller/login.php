@@ -8,8 +8,8 @@
   $con = ConexaoBD::getConexao();  
   
     if (isset($entrar)) {
-        $usuarioDao = new UsuarioDao();
-        $usuario = $usuarioDao->getUsuarioByNick($nick);
+        //$usuarioDao = new UsuarioDao();
+        //$usuario = $usuarioDao->getUsuarioByNick($nick);
              
       $query = "SELECT * FROM usuario WHERE nick = '$nick' AND senha = '$senha'";
       $stmt = $con->prepare($query);
