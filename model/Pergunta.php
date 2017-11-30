@@ -1,16 +1,11 @@
 <?php
 class Pergunta {
     
-   private $id;
    private $idQuestionario;
    private $sequenciaPergunta;
    private $idTipoPergunta;
    private $obrigatorio;
-   
-   public function getIdPergunta(){
-      return $this->id;
-   }
-   
+      
    public function getIdQuestionario(){
       return $this->idQuestionario;
    }
@@ -26,11 +21,7 @@ class Pergunta {
    public function getObrigatorio(){
       return $this->obrigatorio;
    }
-   
-   public function setIdPergunta($idPergunta){
-      $this->id = $idPergunta;
-   }
-   
+      
    public function setIdQuestionario($idQuestionario){
       $this->idQuestionario = $idQuestionario;
    }

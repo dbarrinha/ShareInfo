@@ -1,31 +1,40 @@
 <?php
-class Alternativa {
+class Resposta {
     
-private $idAlternativa;
-private $idPergunta;
-private $idUsuario;
+   private $idQUestionario;
+   private $seqAlternativa;
+   private $seqPergunta;
+   private $idUsuario;
 
-   private function getIdAlternativa(){
-      $this->idAlternativa;
+   public function getIdQuestionario(){
+      return $this->idQUestionario;
+   }
+   
+   public function getSeqAlternativa(){
+      return $this->seqAlternativa;
    }
 
-   private function getIdPergunta(){
-      $this->idPergunta;
+   public function getSeqPergunta(){
+      return $this->seqPergunta;
    }
 
-   private function getIdUsuario(){
-      $this->idUsuario;
+   public function getIdUsuario(){
+      return $this->idUsuario;
    }
 
-   private function setIdAlternativa($idAlternativa){
-      $this->idAlternativa = $idAlternativa;
+   public function setIdQuestionario($idQuestionario){
+      $this->idQUestionario = $idQuestionario;
+   }
+   
+   public function setSeqAlternativa($seqAlternativa){
+      $this->seqAlternativa = $seqAlternativa;
    }
 
-   private function setIdPergunta($idPergunta){
-      $this->idPergunta = $idPergunta;
+   public function setSeqPergunta($seqPergunta){
+      $this->seqPergunta = $seqPergunta;
    }
 
-   private function setIdUsuario($idUsuario){
+   public function setIdUsuario($idUsuario){
       $this->idUsuario = $idUsuario;
    }
 

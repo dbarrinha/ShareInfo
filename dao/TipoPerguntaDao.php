@@ -1,20 +1,47 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/ConexaoDao.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/model/Usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/model/TipoPergunta.php';
 
-class UsuarioDao {
+class TipoPerguntaDao {
    
-   public function atualizarUsuario(Usuario $usuario){
-      $idUsuario = $usuario->getIdUsuario();
-      $nome = $usuario->getNome();
-      $email = $usuario->getEmail();
-      $nick = $usuario->getNick();
-      $senha = $usuario->getSenha();
+   public function atualizarTipoPergunta(TipoPergunta $tipoPergunta){
+      $idTipoPergunta = $tipoPergunta->getIdTipoPergunta();
+      $nomeTipo = $tipoPergunta->getNomeTipoPergunta();
+      
+      $query = "UPDATE tipo_pergunta SET nome_tipo=? WHERE id=?";
+      $con = ConexaoBD::getConexao();  
+      $stmt = $con->prepare($query);
+      $stmt->bind_param("si", $nomeTipo, $idTipoPergunta);
+      if($stmt->execute()){
+         $stmt->close();
+         $con->close();
+         return TRUE;
+      }
+      return $stmt->errno.' - '.$stmt->error;
+   }
+   
+   public function deletarTipoPergunta($idTipoPergunta){
+      
+      $query = "DELETE FROM tipo_pergunta WHERE id=?";
+      $con = ConexaoBD::getConexao();  
+      $stmt = $con->prepare($query);
+      $stmt->bind_param("i", $idTipoPergunta);
+      if($stmt->execute()){
+         $stmt->close();
+         $con->close();
+         return TRUE;
+      }
+      return $stmt->errno.' - '.$stmt->error;
+   }
+   
+   public function inserirTipoPergunta(TipoPergunta $tipoPergunta){
+      $id = $tipoPergunta->getIdTipoPergunta();
+      $nomeTipo = $tipoPergunta->getNomeTipoPergunta();
         
-      $query = "UPDATE usuario SET nome=?, email=?, nick=?, senha=? WHERE id=?";
+      $query = "INSERT INTO tipo_pergunta VALUES (?,?)";
       $con = ConexaoBD::getConexao();  
       $stmt = $con->prepare($query);
-      $stmt->bind_param("ssssi", $nome, $email, $nick, $senha, $idUsuario);
+      $stmt->bind_param("is", $id, $nomeTipo);
       if($stmt->execute()){
          $stmt->close();
          $con->close();
@@ -23,42 +50,11 @@ class UsuarioDao {
       return $stmt->errno.' - '.$stmt->error;
    }
    
-   public function deletarUsuario($idUsuario){        
-      $query = "DELETE FROM usuario WHERE id=?";
+   public function getTipoPerguntaById($idPergunta){        
+      $query = "SELECT * FROM tipo_pergunta WHERE id=?";
       $con = ConexaoBD::getConexao();  
       $stmt = $con->prepare($query);
-      $stmt->bind_param("i", $idUsuario);
-      if($stmt->execute()){
-         $stmt->close();
-         $con->close();
-         return TRUE;
-      }
-      return $stmt->errno.' - '.$stmt->error;
-   }
-   
-   public function inserirUsuario(Usuario $usuario){
-      $nome = $usuario->getNome();
-      $email = $usuario->getEmail();
-      $nick = $usuario->getNick();
-      $senha = $usuario->getSenha();
-        
-      $query = "INSERT INTO usuario VALUES (NULL,?,?,?,?)";
-      $con = ConexaoBD::getConexao();  
-      $stmt = $con->prepare($query);
-      $stmt->bind_param("ssss", $nome, $email, $nick, $senha);
-      if($stmt->execute()){
-         $stmt->close();
-         $con->close();
-         return TRUE;
-      }
-      return $stmt->errno.' - '.$stmt->error;
-   }
-   
-   public function getUsuarioById($idUsuario){        
-      $query = "SELECT * FROM usuario WHERE id=?";
-      $con = ConexaoBD::getConexao();  
-      $stmt = $con->prepare($query);
-      $stmt->bind_param("i", $idUsuario);
+      $stmt->bind_param("i", $idPergunta);
       if($stmt->execute()){
          $resultado = $stmt->get_result();
          $arrayObjeto = $resultado->fetch_array(MYSQLI_ASSOC);
