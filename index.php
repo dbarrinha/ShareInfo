@@ -17,7 +17,7 @@ titulo_perg1=aaaaaaa
 
 $index_perguntas = $_SESSION["index_pergunta"];
 
-
+$titulo_questionario = $_GET["titulo_questionario"];
 for(int i = 1 ; i <=$index_perguntas ; i++){
 	$sequencia = i;
 	$titulo_pergunta = $_GET["titulo_perg".i];
