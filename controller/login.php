@@ -20,8 +20,9 @@
               die();
             }else{
               setcookie("nick",$nick);
-              $_SESSION["index_pergunta"] = 1;
+              $_SESSION["index_pergunta"] = 0;
               $_SESSION["nick"] = $nick;
+              //atribuir o id na sessao tbm
               header("Location:../views/painelUser.php");
             }
         }

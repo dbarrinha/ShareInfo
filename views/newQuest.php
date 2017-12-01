@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    $_SESSION["index_pergunta"] = 0;
+    $user = "nick nao encontrado";
+    if(isset($_SESSION["nick"])){
+      $user = $_SESSION["nick"];
+    }else{
+      
+      header("Location:login.html");
+      //quando for pra login, mostrar uma mensagem lá mandando o usuario logar
+    }
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -25,7 +37,7 @@ and open the template in the editor.
                      color: black;
             }
             .bg-1 { 
-                background-color: #1abc9c; /* Green */
+                background-color: lightcoral; /* Green */
                 color: black;
             }
             .bg-2 { 
@@ -52,7 +64,7 @@ and open the template in the editor.
                 margin-bottom: 0;
                 font-size: 12px;
                 letter-spacing: 5px;
-                
+                background-color: #33ccff !important;
             }
             .navbar-nav  li a:hover {
                 color: #1abc9c !important;
@@ -82,17 +94,19 @@ and open the template in the editor.
             <div class="container">
               <div class="navbar-header">
                 <a class="navbar-brand" href="#">Share Info</a>
+                <a class="navbar-brand" href="painelUser.php">Painel</a>
               </div>
               <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a  href="#">Entrar</a></li>
-                  <li><a href="#">Cadastrar</a></li>
+                    <li><a  href="newQuest.php">NOVO QUESTIONÁRIO!</a></li>
+                  <li><a><?= $user ?></a></li>
+                  <li><a href="/controller/logout.php">Sair</a></li>
                 </ul>
               </div>
             </div>
         </nav>
         <div class="bg-1">
-            <form method="GET" id="formPrincipal" action="" class="text-center">
+            <form method="GET" id="formPrincipal" action="../controller/salvaQuest.php" class="text-center">
                 <div id="questionario" class="container-fluid " >
                     <h3 class="margin text-center">Qual sua pergunta?</h3>
                     <input id='titulo_questionario' name="titulo_questionario" required="">
@@ -146,3 +160,4 @@ and open the template in the editor.
     </body>
     
 </html>
+

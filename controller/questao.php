@@ -18,7 +18,7 @@ if($tipo_pergunta == 1){
     $string .= "<input type='hidden' value='{$num}' name='tam{$id}'>";
     echo $string;
 }else if($tipo_pergunta == 3){
-     $string .=  "<input type='text' class='pergunta' name='texto,{$id}'>";
+     $string .=  "<input type='text' disabled='disabled' class='pergunta' name='texto,{$id}'>";
      $string .= "<input type='hidden' value='{$num}' name='tam{$id}'>";
      echo $string;
 }else{

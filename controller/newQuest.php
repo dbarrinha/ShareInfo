@@ -1,12 +1,13 @@
 <?php 
 session_start();
 
-$id = $_SESSION["index_pergunta"]++;
+$id = ++$_SESSION["index_pergunta"];
+
 require '../model/Pergunta.php';
 $pergunta = "<hr/>
     <div id='{$id}'>
-                        <input class='form-control' type='text' name='titulo_perg{$id}' id='titulo{$id}' placeholder='Pergunta' >
-                        <select  id='menu{$id}' class='form-control bg-3'   onchange='escolheResposta({$id})'>
+                        <input class='form-control' required='' type='text' name='titulo_perg{$id}' id='titulo{$id}' placeholder='Pergunta' >
+                        <select  id='menu{$id}' class='form-control bg-3' name='tipo_pergunta{$id}'  onchange='escolheResposta({$id})'>
                             <option value=' ' selected='selected'>Escolha a forma de resposta</option>
                             <option value='1' >Única Opção</option>
                             <option value='2'>Multipla Escolha</option>

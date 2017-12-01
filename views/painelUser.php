@@ -11,9 +11,9 @@ and open the template in the editor.
     if(isset($_SESSION["nick"])){
       $user = $_SESSION["nick"];
     }else{
-      echo"Bem-Vindo, convidado <br>";
-      echo"Essas informações <font color='red'>NÃO PODEM</font> ser acessadas por você";
-      echo"<br><a href='login.html'>Faça Login</a> Para ler o conteúdo";
+      
+      header("Location:login.html");
+      //quando for pra login, mostrar uma mensagem lá mandando o usuario logar
     }
 
      
@@ -29,7 +29,11 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
-            
+            body {
+                font: 20px Montserrat, sans-serif;
+                line-height: 1.8;
+                color: #1abc9c;
+            }   
              p {font-size: 16px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
@@ -60,6 +64,7 @@ and open the template in the editor.
       margin-bottom: 0;
       font-size: 12px;
       letter-spacing: 5px;
+      background-color: #33ccff !important; 
   }
   .navbar-nav  li a:hover {
       color: #1abc9c !important;
@@ -74,24 +79,19 @@ and open the template in the editor.
     <body>
         <!-- Navbar -->
         <nav class="navbar navbar-default">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                        
-              </button>
-                <a class="navbar-brand" href="/index.html">Share Info</a>
-              <a class="navbar-brand" href="#">Painel</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav navbar-right">
-                  <li><a class="newQuest" href="newQuest.html">NOVO QUESTIONÁRIO!</a></li>
-                  <li><a><?php echo $user ?></a></li>
+            <div class="container">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Share Info</a>
+                <a class="navbar-brand" href="painelUser.php">Painel</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a  href="newQuest.php">NOVO QUESTIONÁRIO!</a></li>
+                  <li><a><?= $user ?></a></li>
                   <li><a href="/controller/logout.php">Sair</a></li>
-              </ul>
+                </ul>
+              </div>
             </div>
-          </div>
         </nav>
     </body>
 </html>
