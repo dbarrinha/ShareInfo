@@ -53,7 +53,7 @@
             <form method="GET" id="formPrincipal" action="../controller/salvaQuest.php" class="text-center">
                 <div id="questionario" class="container-fluid " >
                     <div class="input-field col s6">
-                        <input id="titulo_questionario" type="text" required="" class="validate">
+                        <input id="titulo_questionario" name='titulo_questionario' type="text" required="" class="validate">
                         <label for="titulo_questionario">Título do Questionário</label>
                     </div>
                        
