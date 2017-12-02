@@ -26,6 +26,7 @@ $questionarioDao->inserirQuestionario($questionario);
 $numero_de_perguntas = $_SESSION["index_pergunta"];
 
 for( $i = 1 ; $i <= $numero_de_perguntas ; $i++){
+    //testa se a pergunta realmente existe, if não, dá tipo um continue
     $titulo_pergunta = $_GET["titulo_perg".$i];
     $numero_de_alternativas = $_GET["tam".$i];
     $titulo_pergunta = $_GET["tipo_pergunta".$i];

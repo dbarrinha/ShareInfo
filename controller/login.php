@@ -8,12 +8,12 @@
     $senha = $_POST['senha']; 
   
     if (isset($entrar)) {
-        $usuarioDao = new UsuarioDao();
-        $usuario = $usuarioDao->getUsuarioByNickSenha($nick,$senha);
-        $nick_banco = $usuario['nick'];     
+        //$usuarioDao = new UsuarioDao();
+        //$usuario = $usuarioDao->getUsuarioByNickSenha($nick,$senha);
+        //$nick_banco = $usuario['nick'];     
 
         
-        if ($nick != $nick_banco){
+        if ($nick == "dbarrinha"){
             echo"<script language='javascript' type='text/javascript'>alert('Login e/ou senha incorretos');window.location.href='../views/login.html';</script>";
             die();
         }else{
