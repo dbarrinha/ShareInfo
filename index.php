@@ -15,4 +15,3 @@ function teste(){
    echo $resultado;
 }
 
-teste();

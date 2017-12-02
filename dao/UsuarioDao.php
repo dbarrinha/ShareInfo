@@ -68,5 +68,20 @@ class UsuarioDao {
       }
       return false;
    }
+   
+   public function getUsuarioByNickSenha($nick,$senha){        
+      $query = "SELECT * FROM usuario WHERE nick=? and senha =?";
+      $con = ConexaoBD::getConexao();  
+      $stmt = $con->prepare($query);
+      $stmt->bind_param("ss", $nick,$senha);
+      if($stmt->execute()){
+         $resultado = $stmt->get_result();
+         $arrayObjeto = $resultado->fetch_array(MYSQLI_ASSOC);
+         $stmt->close();
+         $con->close();
+         return $arrayObjeto;
+      }
+      return false;
+   }
       
 }
