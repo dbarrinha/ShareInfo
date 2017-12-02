@@ -5,7 +5,7 @@ $id = ++$_SESSION["index_pergunta"];
 
 require '../model/Pergunta.php';
 $pergunta = "
-    <div id='{$id}' >
+    <div id='{$id}' ><hr/>
                         <div class='row'>  
                         <div class='input-field col s6'>
                             <input id='email' type='text' required='' class='validate' name='titulo_perg{$id}' id='titulo{$id}'>
