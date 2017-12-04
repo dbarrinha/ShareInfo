@@ -26,15 +26,28 @@ $questionarioDao->inserirQuestionario($questionario);
 $numero_de_perguntas = $_SESSION["index_pergunta"];
 
 for( $i = 1 ; $i <= $numero_de_perguntas ; $i++){
-    $titulo_pergunta = $_GET["titulo_perg".$i];
-    $numero_de_alternativas = $_GET["tam".$i];
-    $titulo_pergunta = $_GET["tipo_pergunta".$i];
+    if (isset($_GET["titulo_perg" . $i])) {
+        $titulo_pergunta = $_GET["titulo_perg" . $i];
+    } else {
+        continue;
+    }
+    
+    if (isset($_GET["tam".$i])) {
+        $numero_de_alternativas = $_GET["tam".$i];
+    } else {
+        continue;
+    }
+
+    if (isset($_GET["tipo_pergunta".$i])) {
+        $titulo_pergunta = $_GET["tipo_pergunta".$i];
+    } else {
+        continue;
+    }
+    
     for($j = 1 ; $j <= $numero_de_alternativas ; $j++){
         $texto_alternativa = $_GET["txt_alt".$j.",".$i];
     }
 }
-$string = "Questionário Salvo com Sucesso!";
-
 header("Location:../views/newQuest.php");
 
-echo "<script>alert({$string})</script>";
+

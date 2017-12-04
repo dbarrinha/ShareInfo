@@ -26,7 +26,7 @@
         </script>
     </head>
     
-    <body>
+    <body >
         
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
@@ -35,7 +35,7 @@
           <li class="divider"></li>
           <li><a href="#!">Sair</a></li>
         </ul>
-        <nav>
+        <nav class="z-depth-3 ">
           <div class="nav-wrapper">
               <a href="../index.html" class="brand-logo">Share Info</a>
             <ul class="right hide-on-med-and-down">
@@ -49,14 +49,15 @@
         
         
         
-        <div class="container">
+        <div class="container ">
             <form method="GET" id="formPrincipal" action="../controller/salvaQuest.php" class="text-center">
                 <div id="questionario" class="container-fluid " >
                     <div class="input-field col s6">
+                        
                         <input id="titulo_questionario" name='titulo_questionario' type="text" required="" class="validate">
                         <label for="titulo_questionario">Título do Questionário</label>
                     </div>
-                       
+                     
                      
                 </div>
                 
@@ -64,17 +65,20 @@
                 <button type="button" class="waves-effect waves-light btn"  onclick="novaPergunta()">Nova Pergunta
                     <i class="material-icons right">plus_one</i>
                 </button>
+                
                 <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
                     <i class="material-icons right">send</i>
                 </button>
+                
             </form>
+            <form   
         </div> 
         
         
         <script>
-            
-
-
+            window.onbeforeunload =function fecharJanela(){  
+                return "Você realmente deseja fechar a janela?"  
+            }  
             
             function escolheResposta(id_pergunta){
                 var valor = $("#menu"+id_pergunta).val();
@@ -112,7 +116,7 @@
             }
             
             function novaPergunta(){
-                $.get("../controller/newQuest.php").done(function (val){
+                $.get("../controller/getPergunta.php").done(function (val){
                         $("#questionario").append(val);
                         $('select').material_select();
                     });
@@ -122,8 +126,8 @@
             function removeById(id){
                 $("#"+id).remove();
             }
-            
-            
+             
+           
             
 
         </script>
