@@ -2,6 +2,7 @@
 class Pergunta {
     
    private $idQuestionario;
+   private $tituloPergunta;
    private $sequenciaPergunta;
    private $idTipoPergunta;
    private $obrigatorio;
@@ -10,6 +11,10 @@ class Pergunta {
       return $this->idQuestionario;
    }
    
+   public function getTituloPergunta(){
+       return $this->tituloPergunta;
+   }
+
    public function getSequenciaPergunta(){
       return $this->sequenciaPergunta;
    }
@@ -26,7 +31,11 @@ class Pergunta {
       $this->idQuestionario = $idQuestionario;
    }
    
-   public function setSequenciaPergunta($sequenciaPergunta){
+   public function setTituloPergunta($tituloPergunta){
+       $this->tituloPergunta = $tituloPergunta;
+   }
+
+      public function setSequenciaPergunta($sequenciaPergunta){
       $this->sequenciaPergunta = $sequenciaPergunta;
    }
    

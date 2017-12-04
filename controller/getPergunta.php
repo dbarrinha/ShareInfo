@@ -11,7 +11,7 @@ $pergunta = "
                             <div class='indeterminate'></div>
                         </div>
                         <div class='input-field col s6'>
-                            <input id='email' type='text' required='' class='validate' name='titulo_perg{$id}' id='titulo{$id}'>
+                            <input id='email' type='text' required='' class='validate' name='titulo_perg{$id}' >
                             <label for='email'>Pergunta{$id}</label>
                         </div>
                         <div class='input-field col s3 '>    

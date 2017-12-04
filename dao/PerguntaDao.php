@@ -9,12 +9,13 @@ class PerguntaDao {
       $seqPergunta = $pergunta->getSequenciaPergunta();
       $idTipoPergunta = $pergunta->getIdTipoPergunta();
       $obrigatorio = $pergunta->getObrigatorio();
+      $tituloPergunta = $pergunta->getTituloPergunta();
         
       $query = "UPDATE pergunta SET tipo_pergunta=?, obrigatorio=? "
-              . "WHERE id_questionario=? AND sequencia_pergunta=?";
+              . "WHERE id_questionario=? AND sequencia_pergunta=? AND titulo_pergunta =?" ;
       $con = ConexaoBD::getConexao();  
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iiii", $idTipoPergunta, $obrigatorio, $idQuestionario, $seqPergunta);
+      $stmt->bind_param("iiiis", $idTipoPergunta, $obrigatorio, $idQuestionario, $seqPergunta,$tituloPergunta);
       if($stmt->execute()){
          $stmt->close();
          $con->close();
@@ -41,11 +42,12 @@ class PerguntaDao {
       $sequenciaPergunta = $pergunta->getSequenciaPergunta();
       $idTipoPergunta = $pergunta->getIdTipoPergunta();
       $obrigatorio = $pergunta->getObrigatorio();
-        
-      $query = "INSERT INTO pergunta VALUES (?,?,?,?)";
+      $tituloPergunta = $pergunta->getTituloPergunta();
+      
+      $query = "INSERT INTO pergunta VALUES (?,?,?,?,?)";
       $con = ConexaoBD::getConexao();  
       $stmt = $con->prepare($query);
-      $stmt->bind_param("iiii", $idQuestionario, $sequenciaPergunta,$idTipoPergunta, $obrigatorio);
+      $stmt->bind_param("iiiis", $idQuestionario, $sequenciaPergunta,$tituloPergunta, $idTipoPergunta, $obrigatorio );
       if($stmt->execute()){
          $stmt->close();
          $con->close();

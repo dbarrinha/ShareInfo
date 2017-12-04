@@ -13,25 +13,34 @@ session_start();
 
 require_once '../dao/QuestionarioDao.php';
 require_once '../model/Questionario.php';
-
+require_once '../model/Pergunta.php';
+require_once '../dao/PerguntaDao.php';
+require_once '../model/Alternativa.php';
+require_once '../dao/AlternativaDao.php';
 
 $titulo_questionario = $_GET["titulo_questionario"];
 $id_usuario = $_SESSION["id_user"];
 //---------------------------------------------------
 $questionarioDao = new QuestionarioDao;
 $questionario = new Questionario();
+$pergunta = new Pergunta();
+$perguntaDao = new PerguntaDao();
+$alternativa = new Alternativa();
+$alternativaDao = new AlternativaDao();
+
 $questionario->setIdUsuario($id_usuario);
 $questionario->setIdTitulo($titulo_questionario);
 //Salva e pega o id, pode melhorar
 $questionarioDao->inserirQuestionario($questionario);
 $id_questionario = $questionarioDao->getUltimoQuestionarioByIdUser($id_usuario)["id"];
 //---------------------------------------------------
-
+var_dump($_GET);
+echo '<br>';
 $numero_de_perguntas = $_SESSION["index_pergunta"];
 
 for( $i = 1 ; $i <= $numero_de_perguntas ; $i++){
-    if (isset($_GET["titulo_perg" . $i])) {
-        $titulo_pergunta = $_GET["titulo_perg" . $i];
+    if (isset($_GET["titulo_perg".$i])) {
+        $titulo_pergunta = $_GET["titulo_perg".$i];
     } else {
         continue;
     }
@@ -43,13 +52,29 @@ for( $i = 1 ; $i <= $numero_de_perguntas ; $i++){
     }
 
     if (isset($_GET["tipo_pergunta".$i])) {
-        $titulo_pergunta = $_GET["tipo_pergunta".$i];
+        $tipo_pergunta = $_GET["tipo_pergunta".$i];
     } else {
         continue;
     }
-    
+    $pergunta->setTituloPergunta("$titulo_pergunta");
+    $pergunta->setIdQuestionario($id_questionario);
+    $pergunta->setIdTipoPergunta($tipo_pergunta);
+    $pergunta->setObrigatorio(1);
+    $pergunta->setSequenciaPergunta($i);
+    $resultadoInserPerg = $perguntaDao->inserirPergunta($pergunta);
+    echo $resultadoInserPerg."<br>";
     for($j = 1 ; $j <= $numero_de_alternativas ; $j++){
-        $texto_alternativa = $_GET["txt_alt".$j.",".$i];
+        if (isset($_GET["txt_alt".$j.",".$i])) {
+            $texto_alternativa = $_GET["txt_alt".$j.",".$i];
+        } else {
+            continue;
+        }
+        $alternativa->setIdQuestionario($id_questionario);
+        $alternativa->setSeqAlternativa($j);
+        $alternativa->setTextoAlternativa($texto_alternativa);
+        $alternativa->setSeqPergunta($i);
+        $resultadoInserAlt = $alternativaDao->inserirAlternativa($alternativa);
+        //echo "Alternativa inserida: ".$resultadoInserAlt."<br>";
     }
 }
 //header("Location:../views/newQuest.php");

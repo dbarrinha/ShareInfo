@@ -50,8 +50,9 @@
           <li class="divider"></li>
           <li><a href="#!">Sair</a></li>
         </ul>
-        <nav class="z-depth-3 " style="position: fixed;top: 0;overflow: hidden;">
-          <div class="nav-wrapper">
+        <div class="navbar-fixed">
+        <nav class="z-depth-3 " >
+          <div class="nav-wrapper container">
               <a href="../index.html" class="brand-logo">Share Info</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="painelUser.php">Painel</a></li>
@@ -60,6 +61,7 @@
             </ul>
           </div>
         </nav>
+        </div>
         <!-- Fim Barra de Navegação-->
         
         
@@ -161,9 +163,7 @@
                 $("#"+id).remove();
             }
              
-            function preLoader(){
-                alert("fdfsd");
-            }
+            
             
             
 
