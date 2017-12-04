@@ -64,5 +64,20 @@ class QuestionarioDao {
       }
       return false;
    }
+   
+   public function getUltimoQuestionarioByIdUser($iduser){        
+      $query = "SELECT * FROM questionario q WHERE q.id_usuario = ? ORDER BY q.id DESC LIMIT 1";
+      $con = ConexaoBD::getConexao();  
+      $stmt = $con->prepare($query);
+      $stmt->bind_param("i", $iduser);
+      if($stmt->execute()){
+         $resultado = $stmt->get_result();
+         $arrayObjeto = $resultado->fetch_array(MYSQLI_ASSOC);
+         $stmt->close();
+         $con->close();
+         return $arrayObjeto;
+      }
+      return false;
+   }
       
 }

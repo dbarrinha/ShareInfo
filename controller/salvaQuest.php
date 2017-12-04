@@ -12,16 +12,20 @@ session_start();
 &tam2=3*/
 
 require_once '../dao/QuestionarioDao.php';
-echo var_dump($_GET);
+require_once '../model/Questionario.php';
+
+
 $titulo_questionario = $_GET["titulo_questionario"];
 $id_usuario = $_SESSION["id_user"];
-
-$questionario = new Questionario;
+//---------------------------------------------------
 $questionarioDao = new QuestionarioDao;
-
-$questionario->setIdTitulo($titulo_questionario);
+$questionario = new Questionario();
 $questionario->setIdUsuario($id_usuario);
+$questionario->setIdTitulo($titulo_questionario);
+//Salva e pega o id, pode melhorar
 $questionarioDao->inserirQuestionario($questionario);
+$id_questionario = $questionarioDao->getUltimoQuestionarioByIdUser($id_usuario)["id"];
+//---------------------------------------------------
 
 $numero_de_perguntas = $_SESSION["index_pergunta"];
 
@@ -48,6 +52,6 @@ for( $i = 1 ; $i <= $numero_de_perguntas ; $i++){
         $texto_alternativa = $_GET["txt_alt".$j.",".$i];
     }
 }
-header("Location:../views/newQuest.php");
+//header("Location:../views/newQuest.php");
 
 

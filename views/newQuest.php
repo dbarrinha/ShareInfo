@@ -1,12 +1,19 @@
 <?php
     session_start();
+    require_once '../dao/QuestionarioDao.php';
+    require_once '../model/Questionario.php';
+    
+    
     $_SESSION["index_pergunta"] = 0;
     $user = "nick nao encontrado";
-    if(isset($_SESSION["nick"])){
+    if(isset($_SESSION["nick"]) ){
       $user = $_SESSION["nick"];
     }else{
       header("Location:login.html");
     }
+    
+    
+            
 ?>
 
 <html>
