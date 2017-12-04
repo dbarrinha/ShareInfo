@@ -19,11 +19,19 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="../resources/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="../resources/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        
-        <script>
-            
-            
-        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
+        <style>
+             body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+              }
+
+              main {
+                flex: 1 0 auto;
+              }
+        </style>
     </head>
     
     <body >
@@ -35,7 +43,7 @@
           <li class="divider"></li>
           <li><a href="#!">Sair</a></li>
         </ul>
-        <nav class="z-depth-3 ">
+        <nav class="z-depth-3 " style="position: fixed;top: 0;overflow: hidden;">
           <div class="nav-wrapper">
               <a href="../index.html" class="brand-logo">Share Info</a>
             <ul class="right hide-on-med-and-down">
@@ -49,9 +57,9 @@
         
         
         
-        <div class="container ">
-            <form method="GET" id="formPrincipal" action="../controller/salvaQuest.php" class="text-center">
-                <div id="questionario" class="container-fluid " >
+        <div class="container"   style="min-height: 700px; margin-top: 65px;">
+            <form method="GET"  id="formPrincipal" action="../controller/salvaQuest.php" class="text-center" >
+                <div id="questionario"  class="container-fluid " >
                     <div class="input-field col s6">
                         
                         <input id="titulo_questionario" name='titulo_questionario' type="text" required="" class="validate">
@@ -69,11 +77,29 @@
                 <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
                     <i class="material-icons right">send</i>
                 </button>
-                
             </form>
-            <form   
-        </div> 
-        
+             
+        </div>   
+            <footer class="page-footer">
+                <div class="container" >
+                  <div class="row">
+                    <div class="col l6 s12">
+                      <h5 class="white-text">Footer Content</h5>
+                      <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                      <h5 class="white-text">Links</h5>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-copyright">
+                  <div class="container">
+                  © 2014 Copyright Text
+                  <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                  </div>
+                </div>
+              </footer>
         
         <script>
             window.onbeforeunload =function fecharJanela(){  
@@ -119,21 +145,26 @@
                 $.get("../controller/getPergunta.php").done(function (val){
                         $("#questionario").append(val);
                         $('select').material_select();
+                        $('.progress').delay(400).fadeOut('slow');   
                     });
-                     
+                
             }
             
             function removeById(id){
                 $("#"+id).remove();
             }
              
-           
+            function preLoader(){
+                alert("fdfsd");
+            }
+            
             
 
         </script>
         <script src="../resources/js/jquery.js" ></script>
         <script src="../resources/js/materialize.js"></script>
         <script src="../resources/js/init.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     </body>
     
 </html>

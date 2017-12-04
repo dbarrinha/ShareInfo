@@ -7,6 +7,9 @@ require '../model/Pergunta.php';
 $pergunta = "
     <div id='{$id}' >   
                         <div class='row z-depth-1'>  
+                        <div class='progress'>
+                            <div class='indeterminate'></div>
+                        </div>
                         <div class='input-field col s6'>
                             <input id='email' type='text' required='' class='validate' name='titulo_perg{$id}' id='titulo{$id}'>
                             <label for='email'>Pergunta{$id}</label>
