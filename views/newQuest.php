@@ -48,13 +48,14 @@
           <li><a href="#!">Perfil</a></li>
           <li><a href="#!">Configurações</a></li>
           <li class="divider"></li>
-          <li><a href="#!">Sair</a></li>
+          <li><a href="../controller/logout.php">Sair</a></li>
         </ul>
         <div class="navbar-fixed">
         <nav class="z-depth-3 " >
           <div class="nav-wrapper container">
               <a href="../index.html" class="brand-logo">Share Info</a>
             <ul class="right hide-on-med-and-down">
+                <li><a href="newQuest.php">Novo Questionário</a></li>
                 <li><a href="painelUser.php">Painel</a></li>
               <!-- Dropdown Trigger -->
               <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?= $user ?><i class="material-icons right">arrow_drop_down</i></a></li>
@@ -83,7 +84,7 @@
                     <i class="material-icons right">plus_one</i>
                 </button>
                 
-                <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+                <button class="btn waves-effect waves-red" type="submit" name="action">Salvar
                     <i class="material-icons right">send</i>
                 </button>
             </form>
